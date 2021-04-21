@@ -60,7 +60,7 @@ def get_attributes(conn):
     values=list(set(values))
     return values
 
-def wldap(
+def search(
     attrs=[],
     cns=[],
     emails=[],
