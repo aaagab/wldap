@@ -25,7 +25,7 @@ if __name__ == "__main__":
     ).get_argsns_dy_app()
 
     if args.search.here:
-        pprint(pkg.wldap(
+        pprint(pkg.search(
             filenpa_conf=os.path.join(etconf.direpa_configuration, "settings.json"),
             attrs=args.attrs.values,
             cns=args.cns.values,
