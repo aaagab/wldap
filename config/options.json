@@ -1,0 +1,23 @@
+{
+    "attrs": {
+        "nested": true,
+        "nvalues": "+"
+    },
+    "cns": {
+        "nested": true,
+        "nvalues": "+"
+    },
+    "emails": {
+        "nested": true,
+        "nvalues": "+"
+    },
+    "get_attrs": {
+        "nested": true
+    },
+    "get_all_attrs": {
+        "nested": true
+    },
+    "search": {
+        "args": "attrs,cns,emails,get_attrs,get_all_attrs"
+    }
+}
