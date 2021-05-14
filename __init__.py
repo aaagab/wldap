@@ -2,9 +2,9 @@
 # authors: Gabriel Auger
 # name: wldap
 # licenses: MIT 
-__version__ = "1.0.1"
+__version__ = "2.0.0"
 
-from .dev.wldap import search
+from .dev.wldap import user_search, raw_search, LdapServer
 from .gpkgs import message as msg
 from .gpkgs.options import Options
 from .gpkgs.etconf import Etconf
