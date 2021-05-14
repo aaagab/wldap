@@ -18,7 +18,8 @@ print(server.schema)
 conn=Connection(server, dy_conf["account"], dy_conf["password"], auto_bind=True)
 conn.search(dy_conf["dc"], '(&(objectCategory=person)(objectClass=user))')
 print(conn.entries)
-
+for entry in conn.entries:
+  entry=json.loads(conn.entries[0].entry_to_json())["attributes"]
 # search more than 1000 results
 conn=Connection(server, dy_conf["account"], dy_conf["password"], auto_bind=True)
 entry_generator = conn.extend.standard.paged_search(
