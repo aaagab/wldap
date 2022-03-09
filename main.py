@@ -24,6 +24,9 @@ if __name__ == "__main__":
 
             main.py --raw-search "(&(&(objectCategory=person)(objectClass=user)(!(userAccountControl:1.2.840.113556.1.4.803:=2))(mail=tom.garza@university.edu))(|(memberOf=CN=university-faculty,OU=Groups,DC=ad,DC=university,DC=edu)(memberOf=CN=university-staff,OU=Groups,DC=ad,DC=university,DC=edu)(memberOf=CN=university-students,OU=Groups,DC=ad,DC=university,DC=edu)))" --get-attrs mail --show-filter
 
+            # extract groups to file (limit should be removed)
+            wldap --raw-search "(|(objectClass=organizationalUnit)(objectClass=Group))" --size-limit 1 --get-attrs cn description distinguishedName > groups.txt
+
             main.py --raw-search "(&(&(objectCategory=person)(objectClass=user)(!(userAccountControl:1.2.840.113556.1.4.803:=2)))(|(memberOf=CN=university-faculty,OU=Groups,DC=ad,DC=university,DC=edu)))" --get-attrs mail --show-filter --count
             main.py --raw-search "(&(&(objectCategory=person)(objectClass=user)(!(userAccountControl:1.2.840.113556.1.4.803:=2)))(|(memberOf=CN=university-faculty,OU=Groups,DC=ad,DC=university,DC=edu)))" --get-attrs mail --show-filter --size-limit 10
         """, 
