@@ -1,0 +1,44 @@
+args:
+  _examples: |
+    main.py --search --user tom.garza --attr mail --get-attrs mail --show-filter
+    main.py --search --user *garza* --attr mail --get-attrs mail --show-filter --size-limit 10
+
+    main.py --search --raw "(&(&(objectCategory=person)(objectClass=user)(!(userAccountControl:1.2.840.113556.1.4.803:=2))(mail=tom.garza@university.edu))(|(memberOf=CN=university-faculty,OU=Groups,DC=ad,DC=university,DC=edu)(memberOf=CN=university-staff,OU=Groups,DC=ad,DC=university,DC=edu)(memberOf=CN=university-students,OU=Groups,DC=ad,DC=university,DC=edu)))" --get-attrs mail --show-filter
+
+    # extract groups to file (limit should be removed)
+    wldap --search --raw "(|(objectClass=organizationalUnit)(objectClass=Group))" --size-limit 1 --get-attrs cn description distinguishedName --to-file groups.json
+
+    main.py --search --raw "(&(&(objectCategory=person)(objectClass=user)(!(userAccountControl:1.2.840.113556.1.4.803:=2)))(|(memberOf=CN=university-faculty,OU=Groups,DC=ad,DC=university,DC=edu)))" --get-attrs mail --show-filter --count
+    main.py --search --raw "(&(&(objectCategory=person)(objectClass=user)(!(userAccountControl:1.2.840.113556.1.4.803:=2)))(|(memberOf=CN=university-faculty,OU=Groups,DC=ad,DC=university,DC=edu)))" --get-attrs mail --show-filter --size-limit 10
+
+  search:
+    _xor: raw,user
+    count:
+    get_attrs:
+      _info: If present but no attributes, then it return attributes without values of
+        the first record found and exit. If not present then all attributes with their
+        values are returned.
+      _values: "*"
+    show_filter:
+    size_limit:
+      _info: Define how many records per search are returned
+      _type: int
+    to_file:
+      _type: vpath
+    raw:
+      _label: FILTER
+      _values: 1
+      less:
+    user:
+      _values: +
+      _label: SEARCH_STRING
+      attr:
+        _info: select what attribute for user_search SEARCH_STRING value.
+        _label: ATTR
+        _required: true
+      get_all_attrs:
+        _info: return all possible attributes for a person or user class object and exit
+      member_of:
+        _info: Or group selection. If no group selected, groups are provided from settings
+        _values: +
+        _label: GROUP
