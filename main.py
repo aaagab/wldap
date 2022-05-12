@@ -70,8 +70,7 @@ if __name__ == "__main__":
             print("Error command-line either --user or --raw is needed")
             sys.exit(1)
 
-
-        results=json.dumps(results, indent=4, sort_keys=True)
+        results=json.dumps(results, indent=4, sort_keys=True, default=str)
         if args.search.to_file._here:
             with open(args.search.to_file._value, "w", encoding="utf-8") as f:
                 f.write("{}".format(results))
