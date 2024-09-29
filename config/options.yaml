@@ -11,6 +11,12 @@ args:
     main.py --search --raw "(&(&(objectCategory=person)(objectClass=user)(!(userAccountControl:1.2.840.113556.1.4.803:=2)))(|(memberOf=CN=university-faculty,OU=Groups,DC=ad,DC=university,DC=edu)))" --get-attrs mail --show-filter --count
     main.py --search --raw "(&(&(objectCategory=person)(objectClass=user)(!(userAccountControl:1.2.840.113556.1.4.803:=2)))(|(memberOf=CN=university-faculty,OU=Groups,DC=ad,DC=university,DC=edu)))" --get-attrs mail --show-filter --size-limit 10
 
+  server:
+    info:
+      _info: get server root dse info
+    schema:  
+      _info: get server schemas
+
   search:
     _xor: raw,user
     count:

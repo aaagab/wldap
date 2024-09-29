@@ -76,3 +76,22 @@ if __name__ == "__main__":
                 f.write("{}".format(results))
         else:
             print(results)
+    elif args.server._here:
+        dy_conf=dict()
+        filenpa_conf=os.path.join(etconf.direpa_configuration, "settings.json")
+        with open(filenpa_conf, "r") as f:
+            dy_conf=json.load(f)
+
+        ldap_srv=pkg.LdapServer(
+            account=dy_conf["account"],
+            dc=dy_conf["dc"],
+            default_groups=dy_conf["groups"],
+            domain=dy_conf["domain"],
+            email_suffix=dy_conf["email_suffix"],
+            password=dy_conf["password"],
+        )
+        with ldap_srv as conn:
+            if args.server.info._here:
+                print(ldap_srv.server.info)
+            if args.server.schema._here:
+                print(ldap_srv.server.schema)
