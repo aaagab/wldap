@@ -6,7 +6,7 @@
     "deps": [
         "fe9fbe81-806f-4e85-8042-aaa33ce02d6a|etconf|2.2.5|gpm",
         "cf09346e-b436-4259-b6dd-e56516b508a5|message|8.1.1|gpm",
-        "89d8676a-6b02-43fa-8694-e97de5680cd0|nargs|1.1.1|gpm"
+        "89d8676a-6b02-43fa-8694-e97de5680cd0|nargs|5.1.2|gpm"
     ],
     "description": "LDAP wrapper",
     "filen_main": "main.py",
@@ -15,7 +15,7 @@
         "MIT"
     ],
     "name": "wldap",
-    "timestamp": 1748178606.544288,
+    "timestamp": 1748179386.7904124,
     "uuid4": "b0bb3154-0e1f-480d-8ac8-648408e4cdb3",
-    "version": "3.1.1"
+    "version": "3.2.0"
 }
