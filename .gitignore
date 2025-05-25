@@ -7,4 +7,5 @@ modules/
 gpkgs/
 /.etconf/
 /todo.txt
-
+.directory
+nargs-cache.json

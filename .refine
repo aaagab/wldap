@@ -8,3 +8,5 @@ __pycache__/
 /.etconf/
 /.gitattributes
 /todo.txt
+.directory
+nargs-cache.json
